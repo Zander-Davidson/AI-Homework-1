@@ -1,5 +1,5 @@
 package algorithms;
 
-public class DFS {
+public class UCS {
 
 }
