@@ -1,29 +1,48 @@
 package algorithms;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.util.HashMap;
+import java.util.Scanner;
 
 public class Driver {
 
 	public static void main(String[] args) {
+		new Driver();
+	}
 
-		try {
-			BufferedReader br = new BufferedReader(new FileReader("edges.txt"));
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	// a master HashMap of node id #s to the node objects they correspond to
+	public static HashMap<String, Node> NODES;
+
+	BFS bfs;
+	UCS ucs;
+	AStar aStar;
+
+	public Driver() {
+		NODES = new Parser().getNodes();
+
+		bfs = new BFS();
+		ucs = new UCS();
+		aStar = new AStar();
+
+		while (true) {
+			printNodeInfo();
 		}
+	}
 
-//		Scanner scanner;
-//		try {
-//			File file = new File("edges.txt");
-//			scanner = new Scanner(file);
-//			while (scanner.hasNextLine())
-//				System.out.println(scanner.nextLine());
-//		} catch (FileNotFoundException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+	// for testing purposes
+	public void printNodeInfo() {
+		System.out.print("\nEnter node ID: ");
+		Scanner scanner = new Scanner(System.in);
+		String nodeId = scanner.nextLine();
+
+		if (NODES.containsKey(nodeId)) {
+			System.out.println("Node: " + nodeId);
+			System.out.println("Heuristic " + NODES.get(nodeId).getHeuristic());
+			System.out.println("Connections (  ID - distance  ): ");
+			for (HashMap.Entry<String, Double> node : NODES.get(nodeId).getConnections().entrySet()) {
+				System.out.println("\t" + node.getKey() + " - " + node.getValue());
+			}
+		} else {
+			System.out.println("Could not find node " + nodeId);
+		}
 	}
 }
