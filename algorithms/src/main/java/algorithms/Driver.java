@@ -26,18 +26,20 @@ public class Driver {
 		// System.out.println(bfs.search("105050228", "105082955"));
 		System.out.println(bfs.search("104779422", "105012740"));
 
-//		while (true) {
-//			printNodeInfo();
-//		}
+		while (true) {
+			printNodeInfo();
+		}
 	}
 
 	// for testing purposes
 	public void printNodeInfo() {
-		System.out.print("\nEnter node ID: ");
+		System.out.print("\nEnter node ID (type 'e' to exit): ");
 		Scanner scanner = new Scanner(System.in);
 		String nodeId = scanner.nextLine();
 
-		if (NODES.containsKey(nodeId)) {
+		if (nodeId.equals("e")) {
+			System.exit(0);
+		} else if (NODES.containsKey(nodeId)) {
 			System.out.println("Node: " + nodeId);
 			System.out.println("Heuristic " + NODES.get(nodeId).getHeuristic());
 			System.out.println("Connections (  ID - distance  ): ");
