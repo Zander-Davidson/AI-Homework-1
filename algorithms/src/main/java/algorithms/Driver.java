@@ -23,9 +23,12 @@ public class Driver {
 		ucs = new UCS();
 		aStar = new AStar();
 
-		while (true) {
-			printNodeInfo();
-		}
+		// System.out.println(bfs.search("105050228", "105082955"));
+		System.out.println(bfs.search("104779422", "105012740"));
+
+//		while (true) {
+//			printNodeInfo();
+//		}
 	}
 
 	// for testing purposes
