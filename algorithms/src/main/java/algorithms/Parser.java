@@ -16,9 +16,8 @@ public class Parser {
 	}
 
 	/**
-	 * creates a new Node with id nodeId. gives inits a connection with connectionId
-	 * and distance. puts the node in the master fNodes HashMap with its id as the
-	 * key
+	 * creates a new Node with id nodeId. inits a connection with connectionId and
+	 * distance. puts the node in the master fNodes HashMap with its id as the key
 	 * 
 	 * @param nodeId       - id of the new node
 	 * @param connectionId - id of the node it is to connect with

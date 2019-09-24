@@ -16,12 +16,12 @@ public class BFS {
 	 *         nodes visited, num nodes in path, and length of path; or no goal node
 	 *         found)
 	 */
-	public String search(String start, String goal) {
+	public String search(final String start, final String goal) {
 		if (!Driver.NODES.containsKey(start) || !Driver.NODES.containsKey(goal)) {
 			return "Search failure: invalid nodes.";
 		}
 
-		// shallowest node will always be pushed to the queue
+		// shallowest node will always be pushed to index 0 of the queue
 		ArrayList<String> queue = new ArrayList<String>();
 
 		// node added to visited when it is expanded
@@ -33,6 +33,7 @@ public class BFS {
 
 		queue.add(start);
 		String parent;
+		System.out.println("Searching...");
 
 		// we loop as long as queue is not empty (in such case, we have not found a goal
 		// node and the search failed)
@@ -40,19 +41,17 @@ public class BFS {
 			parent = queue.remove(0);
 			visited.add(parent);
 
-			ArrayList<String> children = Driver.NODES.get(start).getConnectionIds();
-
 			// looping through the connections (children) of the node selected for expansion
 			for (String child : Driver.NODES.get(parent).getConnectionIds()) {
 
 				// make sure it is not a repetition
-				if (!visited.contains(child) && !queue.contains(child)) {
+				if (!parentMap.containsKey(child) && !queue.contains(child)) {
 					parentMap.put(child, parent);
 
 					// stopping condition. now backtrack to find a path and distance back to goal
 					if (child.equals(goal)) {
 						ArrayList<String> path = new ArrayList<String>();
-						double distance = 0;
+						double distance = 0; // distance of path in kilometers
 
 						while (child != start) {
 							path.add(0, child);
