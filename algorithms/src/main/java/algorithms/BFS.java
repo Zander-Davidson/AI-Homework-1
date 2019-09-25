@@ -18,8 +18,9 @@ public class BFS {
 	 */
 	public String search(final String start, final String goal) {
 		if (!Driver.NODES.containsKey(start) || !Driver.NODES.containsKey(goal)) {
-			return "Search failure: invalid nodes.";
+			return "Search failure: invalid nodes.\n";
 		}
+		System.out.println("Breadth-First Search from " + start + " to " + goal);
 
 		// shallowest node will always be pushed to index 0 of the queue
 		ArrayList<String> queue = new ArrayList<String>();
@@ -60,15 +61,14 @@ public class BFS {
 						}
 						path.add(0, start);
 
-						return "Breadth-First Search from " + start + " to " + goal + "\nNum nodes visited: "
-								+ visited.size() + "\nNum nodes on path: " + path.size() + "\nDistance (km): "
-								+ distance;
+						return "Num nodes visited: " + visited.size() + "\nNum nodes on path: " + path.size()
+								+ "\nDistance (km): " + distance + "\n";
 					} else {
 						queue.add(child);
 					}
 				}
 			}
 		}
-		return "Search failure: goal node not found.";
+		return "Search failure: goal node not found.\n";
 	}
 }

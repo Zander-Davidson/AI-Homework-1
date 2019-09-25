@@ -27,10 +27,13 @@ public class Driver {
 		System.out.println(bfs.search("104779422", "105012740"));
 		System.out.println(ucs.search("105050228", "105082955"));
 		System.out.println(ucs.search("104779422", "105012740"));
+		System.out.println(aStar.search("s", "g"));
+		System.out.println(aStar.search("105050228", "105082955"));
+		System.out.println(aStar.search("104779422", "105012740"));
 
-		while (true) {
-			printNodeInfo();
-		}
+//		while (true) {
+//			printNodeInfo();
+//		}
 	}
 
 	// for testing purposes
