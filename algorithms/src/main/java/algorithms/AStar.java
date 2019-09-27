@@ -2,7 +2,6 @@ package algorithms;
 
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.HashSet;
 
 public class AStar {
@@ -64,10 +63,6 @@ public class AStar {
 		// .sort()
 		ArrayList<Path> paths = new ArrayList<Path>();
 
-		// a map of frontier and visited node identifiers to the Paths they are
-		// associated with
-		HashMap<String, Path> leadNodeMap = new HashMap<String, Path>();
-
 		HashSet<String> visited = new HashSet<String>();
 		String parent;
 		Path parentPath;
@@ -96,15 +91,8 @@ public class AStar {
 				// if the new path has a unique lead node, add it to the list of paths.
 				// otherwise, check if it is not unique and chose the shorter path to keep in
 				// the lead node map
-				if (!visited.contains(child)) { // && !leadNodeMap.containsKey(child)
+				if (!visited.contains(child)) {
 					paths.add(childPath);
-					leadNodeMap.put(child, childPath);
-
-				} else if (leadNodeMap.containsKey(child)) { // && childPath.getEstimatedCost() <
-																// leadNodeMap.get(child).getEstimatedCost()
-//					paths.remove(leadNodeMap.get(child));
-//					paths.add(childPath);
-//					leadNodeMap.replace(child, childPath);
 				}
 			}
 			paths.sort(pathComparator); // sort the paths list shortest (index 0) to longest

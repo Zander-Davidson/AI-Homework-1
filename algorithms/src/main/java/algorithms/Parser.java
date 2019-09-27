@@ -35,7 +35,7 @@ public class Parser {
 	 */
 	private void parseEdges() {
 		try {
-			Scanner scanner = new Scanner(new File("src/main/resources/edges.txt"));
+			Scanner scanner = new Scanner(new File("src/main/java/algorithms/edges.txt"));
 			String[] arr; // space-delimited items of a single line in "edges.txt"
 
 			while (scanner.hasNextLine()) {
@@ -67,7 +67,7 @@ public class Parser {
 	 */
 	private void parseHeuristic() {
 		try {
-			Scanner scanner = new Scanner(new File("src/main/resources/heuristic.txt"));
+			Scanner scanner = new Scanner(new File("src/main/java/algorithms/heuristic.txt"));
 			String[] arr; // space-delimited items of a single line in "heuristic.txt"
 
 			while (scanner.hasNextLine()) {
